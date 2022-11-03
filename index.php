@@ -1,11 +1,8 @@
 <?php
 
-$textStorage = [
-    '0' => [ 'title' => '', 'text' => '' ],
-];
+$textStorage = [];
 
-echo $textStorage[0]['text'];
+function add (&$textStorage, $title, $text) {
+    $textStorage[] = ['title' => $title, 'text' => $text];
+}
 
-function add ($title, $text) {
-
-};
