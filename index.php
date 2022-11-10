@@ -8,16 +8,30 @@ function add (&$textStorage, $title, $text) {
 
 add($textStorage, 'hello', 'world');
 add($textStorage, 'привет', 'мир');
-var_dump($textStorage);
 
 function remove (&$textStorage, $a) {
     foreach ($textStorage as $key => $value) {
         if ($a == $key || $a == $value) {
             unset($textStorage[$a]);
+            return true;
         }
+        return false;
     }
 }
 
-remove($textStorage, 0);
-remove($textStorage, 5);
-var_dump($textStorage);
+var_dump(remove($textStorage, 0));
+var_dump(remove($textStorage, 5));
+
+function edit (array &$textStorage, int $a, string $newTitle, string $newText) {
+    foreach ($textStorage as $key => $value) {
+        if ($a == $key || $a == $value) {
+            $textStorage[$a]['title'] = $newTitle;
+            $textStorage[$a]['text'] = $newText;
+            return true;
+        }
+        return false;
+    }
+}
+
+var_dump(edit($textStorage, 1, 'new title', 'new text'));
+var_dump(edit($textStorage, 5, 'new title', 'new text'));
